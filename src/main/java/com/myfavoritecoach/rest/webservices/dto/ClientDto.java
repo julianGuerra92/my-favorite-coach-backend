@@ -1,42 +1,23 @@
-package com.myfavoritecoach.rest.webservices.model;
+package com.myfavoritecoach.rest.webservices.dto;
 
-import jakarta.persistence.*;
+import com.myfavoritecoach.rest.webservices.model.Role;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
-@Entity
 @Data
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class ClientDto {
 
     private String identificationNumber;
-
     private String firstName;
-
     private String lastName;
-
     private String email;
-
     private String password;
-
     private String phoneNumber;
-
-    @ManyToOne
-    @JoinColumn(name = "role")
-    private Role role;
-
     private String gender;
-
     private Integer age;
-
     private float weight;
-
     private float height;
-
     private String profilePicture;
-
-    private boolean active;
 
 }

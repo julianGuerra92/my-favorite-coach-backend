@@ -1,5 +1,6 @@
 package com.myfavoritecoach.rest.webservices.Service;
 
+import com.myfavoritecoach.rest.webservices.model.Role;
 import com.myfavoritecoach.rest.webservices.model.User;
 import com.myfavoritecoach.rest.webservices.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -27,6 +28,14 @@ public class UserService {
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public List<User> findByRole(String description) {
+        return userRepository.findByRole_Description(description);
+    }
+
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
 }
