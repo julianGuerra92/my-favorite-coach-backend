@@ -39,12 +39,24 @@ public class UserController {
         return ResponseEntity.ok(userList);
     }
 
+    @GetMapping("/count-by-description")
+    public ResponseEntity<Long> countByDescription(@RequestParam String description) {
+        var quantity = userService.countByDescription(description);
+        return ResponseEntity.ok(quantity);
+    }
+
     @PostMapping("/create-client")
     public ResponseEntity<User> createClient(@RequestBody User user){
         user.setRole(new Role(3, "client"));
         user.setActive(true);
-        var newUser = userService.createUser(user);
-        return ResponseEntity.ok(newUser);
+        var newClient = userService.createUser(user);
+        return ResponseEntity.ok(newClient);
+    }
+
+    @PutMapping("/update-client")
+    public ResponseEntity<User> updateClient(@RequestBody User user) {
+        var client = userService.updateUser(user);
+        return  ResponseEntity.ok(client);
     }
 
 }
